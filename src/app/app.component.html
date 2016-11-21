@@ -1,3 +1,66 @@
-<h1>
-  {{title}}
-</h1>
+
+<h1>ngIf directive</h1>
+<div *ngIf="false">Never displayed</div>
+<div *ngIf="2 < 3">2 less than 3</div>
+<div *ngIf="str == 'yes'"></div>
+<div *ngIf="true">Always displayed</div>
+
+<br>
+<br>
+
+<h1>ngSwitch directive</h1>
+<div [ngSwitch]="4">
+  <div *ngSwitchCase="1">Case 1</div>
+  <div *ngSwitchCase="2">Case 2</div>
+  <div *ngSwitchCase="1">Case 3</div>
+  <div *ngSwitchDefault>Default Case</div>
+</div>
+
+<br>
+<br>
+
+<h1>ngStyle directive</h1>
+<div [style.font-size]="'50px'" [style.background-color]="'red'">First way to use ngStyle directive</div>
+
+<div [ngStyle]="{'background-color': 'yellow', color: 'red', 'font-size': '50px' }">Second way to use ngStyle directive</div>
+
+<div>
+  <input type="text"  #colorinput>
+</div>
+
+<div>
+  <input type="text"  #fontinput>
+</div>
+<button (click)="apply(colorinput.value, fontinput.value)">Apply</button>
+
+<div>
+  <span [ngStyle]="{'background-color': color}" [style.font-size.px]="font">{{color}} background</span>
+</div>
+
+<br>
+<br>
+
+<h1>NgClass</h1>
+<div [ngClass]="{bordered: false}">Value is false so class does not apply</div>
+<div [ngClass]="{bordered: true}">Value is true so class applied</div>
+
+
+
+<div [ngClass]="{bordered: isBordered}">
+  {{isBordered ? "ON" : "OFF"}}
+</div>
+
+<div [ngClass]="['change-background-color', 'change-foreground-color']">Added multiple classes using ngClass directive</div>
+
+
+<br>
+<br>
+
+<h1>NgFor directive</h1>
+<div *ngFor="let c of cities; let i = index" (click)="selectCity(i)">{{c}}</div>
+
+<br>
+<br>
+
+<h1>NgNonBindable</h1>
+<div ngNonBindable>{{isBordered}}</div>
